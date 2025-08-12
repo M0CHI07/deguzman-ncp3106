@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Carousel, Cards & Accordion with Animated Icons</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        .carousel-item {
+            min-height: 280px;
+        }
+        .card-text {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+            max-height: 4.5em;
+        }
+        .card-text.expanded {
+            -webkit-line-clamp: unset;
+            max-height: 1000px;
+            overflow: visible;
+            display: block;
+        }
+        .card-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .accordion-button i {
+            margin-right: 10px;
+            transition: transform 0.3s ease;
+        }
+        .accordion-button.collapsed i {
+            transform: rotate(0deg);
+        }
+        .accordion-button:not(.collapsed) i {
+            transform: rotate(90deg);
+        }
+    </style>
+</head>
+<body>
+<div class="m-4">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a href="#" class="navbar-brand">Brand</a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                <div class="navbar-nav">
+                    <a href="#" class="nav-item nav-link active">Home</a>
+                    <a href="#" class="nav-item nav-link">Profile</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Messages</a>
+                        <div class="dropdown-menu">
+                            <a href="#" class="dropdown-item">Inbox</a>
+                            <a href="#" class="dropdown-item">Sent</a>
+                            <a href="#" class="dropdown-item">Drafts</a>
+                        </div>
+                    </div>
+                </div>
+                <form class="d-flex">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <button type="button" class="btn btn-secondary"><i class="bi-search"></i></button>
+                    </div>
+                </form>
+                <div class="navbar-nav">
+                    <a href="#" class="nav-item nav-link">Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<div class="container-lg my-3">
+    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"></li>
+            <li data-bs-target="#myCarousel" data-bs-slide-to="1"></li>
+            <li data-bs-target="#myCarousel" data-bs-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="./assets/msearth.jpg" class="d-block w-100" alt="Slide 1">
+            </div>
+            <div class="carousel-item">
+                <img src="./assets/splash.jpg" class="d-block w-100" alt="Slide 2">
+            </div>
+            <div class="carousel-item">
+                <img src="./assets/kineme.jpg" class="d-block w-100" alt="Slide 3">
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#myCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#myCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+
+    <div class="m-4 card-container">
+        <div class="card" style="width: 300px;">
+            <img src="./assets/damayan.jpg" class="card-img-top" alt="Sample Image">
+            <div class="card-body text-center">
+                <h5 class="card-title">𝗪𝗔𝗥𝗥𝗜𝗢𝗥𝗦, 𝗟𝗘𝗧 𝗨𝗦 𝗛𝗘𝗟𝗣 𝗛𝗔𝗕𝗔𝗚𝗔𝗧 𝗩𝗜𝗖𝗧𝗜𝗠𝗦</h5>
+                <p class="card-text" id="expandableText1">The University of the East, through the Office of Extension and Community Outreach (OECO) of both campuses, is calling on members of the UE community to help victims of the strong monsoons of July 2025 via UE Oplan Damayan...</p>
+                <button class="btn btn-link" id="viewMoreBtn1">See More</button>
+            </div>
+        </div>
+
+        <div class="card" style="width: 300px;">
+            <img src="./assets/lual.jpg" class="card-img-top" alt="Sample Image">
+            <div class="card-body text-center">
+                <h5 class="card-title">📢 UE Caloocan College Freshmen Orientation 📢</h5>
+                <p class="card-text" id="expandableText2">Get ready for the UE Caloocan College Freshmen and Parents Orientation for SY 2025-2026! Don't miss this informative event that will help you transition smoothly into college life...</p>
+                <button class="btn btn-link" id="viewMoreBtn2">See More</button>
+            </div>
+        </div>
+
+        <div class="card" style="width: 300px;">
+            <img src="./assets/ra.jpg" class="card-img-top" alt="Sample Image">
+            <div class="card-body text-center">
+                <h5 class="card-title">🎓 CONGRATULATIONS, GRADUATING STUDENTS! 🎓</h5>
+                <p class="card-text" id="expandableText3">Cheers to over a thousand candidates for senior high school graduation of the UE campuses, whose commencement rites will be held this Monday morning, July 14, 2025, at World Trade Center Metro Manila...</p>
+                <button class="btn btn-link" id="viewMoreBtn3">See More</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="accordion" id="myAccordion">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                    <i class="bi bi-palette"></i>What is CSS?
+                </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
+                <div class="accordion-body">
+                    CSS stands for Cascading Style Sheets. It is used to style and layout web pages.
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                    <i class="bi bi-code-slash"></i>What is JavaScript?
+                </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
+                <div class="accordion-body">
+                    JavaScript is a programming language that adds interactivity to web pages.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const toggleText = (btnId, textId) => {
+        const btn = document.getElementById(btnId);
+        const text = document.getElementById(textId);
+        btn.addEventListener('click', function() {
+            text.classList.toggle('expanded');
+            btn.innerText = text.classList.contains('expanded') ? 'See Less' : 'See More';
+        });
+    };
+    toggleText('viewMoreBtn1', 'expandableText1');
+    toggleText('viewMoreBtn2', 'expandableText2');
+    toggleText('viewMoreBtn3', 'expandableText3');
+</script>
+</body>
+</html>
